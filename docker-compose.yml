@@ -1,0 +1,35 @@
+version: '3'
+services:
+  be: # Ruby on Railsが起動するコンテナ
+    container_name: be-app2
+    build: ./be
+    command: "bundle exec rails s -p 3000 -b 0.0.0.0"
+    ports:
+      - '3009:3000' # localhostの3009ポートでアクセスできるようにする
+    volumes:
+      - ./be:/be # アプリケーションファイルの同期
+    depends_on:
+      - rdb-mysql
+    stdin_open: true
+    tty: true
+
+  rdb-mysql: # MySQLが起動するコンテナ
+    container_name: rdb-mysql
+    # platform: 'linux/amd64' # intel Macの場合
+    platform: linux/x86_64 # M1 Mac
+    image: mysql:8.0
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/config:/etc/mysql/conf.d/my.cnf
+    command: --default-authentication-plugin=mysql_native_password # 認証方式(8系以前)
+    ports:
+      - 3309:3306
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      TZ: 'Asia/Tokyo'
+
+volumes:
+  mysql_data:
+    driver: local

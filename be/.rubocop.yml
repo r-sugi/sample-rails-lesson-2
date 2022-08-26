@@ -1,0 +1,154 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+inherit_gem:
+  rubocop-discourse: default.yml
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0
+  Exclude:
+    - 'Gemfile.lock'
+    - 'vendor/**/*'
+    - 'db/schema.rb'
+
+#################### Discourse ################################
+Discourse/NoAddReferenceOrAliasesActiveRecordMigration:
+  Enabled: false
+
+#################### Layout ################################
+# メソッドチェーンの改行は末尾に . を入れる
+# * REPL に貼り付けた際の暴発を防ぐため
+# * 途中にコメントをはさむことができて実用上圧倒的に便利
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+# 桁揃えが綺麗にならないことが多いので migration は除外
+Layout/ExtraSpacing:
+  Exclude:
+    - "db/migrate/*.rb"
+
+# special_inside_parentheses (default) と比べて
+# * 横に長くなりづらい
+# * メソッド名の長さが変わったときに diff が少ない
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+# private/protected は一段深くインデントする
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+# メソッドチェーン感がより感じられるインデントにする
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
+# {} は 1 行で書くときに主に使われるので、スペースよりも
+# 横に長くならない方が嬉しさが多い。
+Layout/SpaceInsideBlockBraces:
+  SpaceBeforeBlockParameters: false
+
+# * 同名のメソッドがある場合にローカル変数に `_` を付ける
+# * 一時変数として `_` を付ける
+# というテクニックは頻出する
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
+Lint/Void:
+  CheckForMethodsWithNoSideEffects: true
+
+############### Rails ##################
+Rails:
+  Enabled: true
+
+# 意図しないN+1を防止
+Rails/Delegate:
+  Enabled: false
+
+Rails/Exit:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/PluralizationGrammar:
+  Enabled: false
+
+############### RSpec ##################
+# subject はコピペ可搬性よりもそのまま USAGE であって欲しい
+RSpec/DescribedClass:
+  EnforcedStyle: explicit
+
+RSpec/EmptyLineAfterFinalLet:
+  Enabled: false
+
+# each で回したり aggregate_failures 使ってたりすると厳しい。
+# feature spec は exclude でも良いかもしれない。
+# ヒアドキュメント使うと一瞬で超えるので disable も検討。
+RSpec/ExampleLength:
+  Max: 8
+
+################# Metrics #########################
+# Gemfile, Guardfile は DSL 的で基本的に複雑にはならないので除外
+# rake, rspec, environments, routes は巨大な block 不可避なので除外
+Metrics/BlockLength:
+  Exclude:
+    - "Rakefile"
+    - "**/*.rake"
+    - "spec/**/*.rb"
+    - "Gemfile"
+    - "Guardfile"
+    - "config/environments/*.rb"
+    - "config/routes.rb"
+    - "config/routes/**/*.rb"
+    - "*.gemspec"
+
+# migration ファイルは除外
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "db/migrate/*.rb"
+
+#################### Style #################################
+# レキシカルスコープの扱いが alias_method の方が自然。
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+# scope 等は複数行でも lambda ではなく ->{} で揃えた方が見た目が綺麗
+Style/Lambda:
+  EnforcedStyle: literal
+
+# end.some_method とチェインするのはダサい
+# Style/BlockDelimiters と相性が悪いけど、頑張ってコードを修正してください
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+
+# 1_000_000 と区切り文字が 2 個以上必要になる場合のみ _ 区切りを必須にする
+# 10_000_00 は許可しない。(これは例えば 10000 ドルをセント単位にする時に便利だが
+# 頻出しないので foolproof に振る
+Style/NumericLiterals:
+  MinDigits: 7
+  Strict: true
+
+# Hash#has_key? の方が key? よりも意味が通る
+Style/PreferredHashMethods:
+  EnforcedStyle: verbose
+
+# 受け取り側で multiple assignment しろというのを明示
+Style/RedundantReturn:
+  AllowMultipleReturnValues: true
+
+# * 式展開したい場合に書き換えるのが面倒
+# * 文章ではダブルクォートよりもシングルクォートの方が頻出する
+# ことから EnforcedStyle: double_quotes 推奨
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# 式展開中でもダブルクォートを使う
+# 普段の文字列リテラルがダブルクォートなので使い分けるのが面倒
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+# 三項演算子は分かりやすく使いたい。
+# () を外さない方が条件式が何なのか読み取りやすいと感じる。
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex

@@ -1,0 +1,24 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "``` UPDATING ```",
+  "main": "index.js",
+  "private": true,
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "make:pu:png": "java -jar ./docs/plantuml-1.2021.14.jar ./docs/**/**.pu -charset UTF-8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-sugi/oneself-bot-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/r-sugi/oneself-bot-api/issues"
+  },
+  "homepage": "https://github.com/r-sugi/oneself-bot-api#readme"
+}
