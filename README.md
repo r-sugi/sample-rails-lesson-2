@@ -1,8 +1,8 @@
 ## setup
 ### 環境構築方法
 1. docker-compose.yml内のplatformを変更する
-intel Macの場合は`platform: linux/amd64`のみにする（platform: linux/x86_64を削除する）
-M1 Macの場合は`platform: linux/x86_64`のみにする（platform: linux/amd64を削除する）
+- intel Macの場合は`platform: linux/amd64`のみにする（platform: linux/x86_64を削除する）
+- M1 Macの場合は`platform: linux/x86_64`のみにする（platform: linux/amd64を削除する）
 
 2. dockerに関するコマンドを実行する
 ```
