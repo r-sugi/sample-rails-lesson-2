@@ -22,7 +22,7 @@ class SellingImagesController < ApplicationController
   private
 
     def selling_image_params
-      params.require(:selling_image).permit(:content)
+      params.require(:selling_image).permit(:content, :picture)
     end
 
     def correct_user
