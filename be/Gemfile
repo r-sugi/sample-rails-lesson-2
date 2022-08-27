@@ -24,6 +24,10 @@ gem 'sass-rails'
 gem 'turbolinks'
 gem 'autoprefixer-rails'
 
+gem 'faker', '2.22.0'
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap-style'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

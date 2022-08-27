@@ -1,8 +1,9 @@
-<%= @users.each do |user| %>
-  <section class="user_info">
-  <h1>
-    <%= user.name %>
-    <%= user.email %>
-  </h1>
-  </section>
-<% end %>
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+
+<%= will_paginate @users, list_classes: %w(pagination justify-content-end) %>
+
+<ul class="users">
+  <%= render @users %>
+</ul>

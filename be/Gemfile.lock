@@ -73,6 +73,8 @@ GEM
     diff-lcs (1.5.0)
     erubi (1.11.0)
     execjs (2.8.1)
+    faker (2.22.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -231,6 +233,9 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.3.1)
+    will_paginate-bootstrap-style (0.2.4)
+      will_paginate (~> 3.0, >= 3.0.0)
     zeitwerk (2.6.0)
 
 PLATFORMS
@@ -241,6 +246,7 @@ DEPENDENCIES
   bcrypt
   bootsnap (>= 1.4.2)
   bootstrap (~> 5.2.0)
+  faker (= 2.22.0)
   jquery-rails
   listen (~> 3.2)
   mini_racer
@@ -261,6 +267,8 @@ DEPENDENCIES
   turbolinks
   tzinfo-data
   uglifier
+  will_paginate (~> 3.3)
+  will_paginate-bootstrap-style
 
 RUBY VERSION
    ruby 3.0.2p107
