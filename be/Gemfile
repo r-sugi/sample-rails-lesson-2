@@ -20,6 +20,8 @@ gem 'mini_racer'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'bootstrap'
+gem 'sass-rails'
+gem 'turbolinks'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

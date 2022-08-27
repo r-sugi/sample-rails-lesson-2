@@ -199,6 +199,8 @@ GEM
     rubocop-rspec (2.12.1)
       rubocop (~> 1.31)
     ruby-progressbar (1.11.0)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -218,8 +220,13 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.11)
     timecop (0.9.5)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.10)
       thread_safe (~> 0.1)
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
     unicode-display_width (2.2.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -232,7 +239,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootsnap (>= 1.4.2)
-  bootstrap (~> 4.3.1)
+  bootstrap
   jquery-rails
   listen (~> 3.2)
   mini_racer
@@ -247,9 +254,12 @@ DEPENDENCIES
   rubocop-discourse
   rubocop-performance
   rubocop-rails
+  sass-rails
   sprockets (~> 3)
   timecop (~> 0.9.5)
+  turbolinks
   tzinfo-data
+  uglifier
 
 RUBY VERSION
    ruby 3.0.2p107
