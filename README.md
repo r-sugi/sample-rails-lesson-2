@@ -98,3 +98,6 @@ herokuの対応バージョンが2.1.4のためこのバージョンに固定し
 gem install bundler -v 2.1.4
 bundle _2.1.4_ install
 ```
+
+### API mode でcookiesをつかう
+https://qiita.com/piggydev/items/663089428b70c481146b
