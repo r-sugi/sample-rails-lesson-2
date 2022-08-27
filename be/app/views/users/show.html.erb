@@ -5,6 +5,7 @@
       <h1>
         <%= @user.name %>
         <%= @user.email %>
+        <%= button_to "Edit", edit_user_path(@user), class: "nav-link", method: :get %>
       </h1>
     </section>
   </aside>
