@@ -2,5 +2,8 @@
   <span class="content"><%= selling_image.content %></span>
   <span class="timestamp">
     更新日時 <%= time_ago_in_words(selling_image.created_at) %> 前
+  <% if current_user?(selling_image.user) %>
+    <%= button_to "delete", selling_image, method: :delete, data: { confirm: "You sure?" }, form: {style: 'display:inline-block;'} %>
+  <% end %>
   </span>
 </li>
