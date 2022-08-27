@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 2022_08_27_203110) do
   create_table "selling_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id", null: false
+    t.string "picture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "picture"
     t.index ["user_id", "created_at"], name: "index_selling_images_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_selling_images_on_user_id"
   end
