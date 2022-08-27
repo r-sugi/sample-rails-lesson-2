@@ -1,5 +1,7 @@
 # frozen_string_literal: true
-class StaticPagesController < ActionController::Base
-  def home
-  end
+class StaticPagesController < ApplicationController
+  def home; end
+  def help; end
+  def about; end
+  def contact; end
 end
