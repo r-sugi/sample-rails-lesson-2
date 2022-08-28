@@ -1,11 +1,10 @@
 <div class="row top-pages">
   <div class="d-flex align-items-start justify-content-between mb-3">
-    <span style="font-size: 20px; color: #666666; font-weight: bold;">新着画像</span>
-    <%= link_to "すべて見る >", search_path(key: :latest_uploaded), class: 'to-latest-uploaded-list' %>
+    <span style="font-size: 20px; color: #666666; font-weight: bold;">新着画像の検索結果</span>
   </div>
   <div class="d-flex align-items-start justify-content-between">
-    <% if @latest_uploaded_selling_images.any? %>
-      <% @latest_uploaded_selling_images.each do | image | %>
+    <% if @images.any? %>
+      <% @images.each do | image | %>
         <div class="card card-container position-relative">
           <div class="card" class="position-relative">
             <%= image_tag image.picture.url, class: 'top-image' %>

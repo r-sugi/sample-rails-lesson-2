@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :users  do
     resources :selling_images, only: [:index, :create, :destroy]
   end
+
+  get '/search' => 'search#index'
 end
