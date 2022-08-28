@@ -88,7 +88,19 @@ Created database 'be_development'
 Created database 'be_test'
 ```
 
-4. ブラウザで`http://localhost:3009`にアクセスすると、「ホームです」が表示される
+4. データベースをsetupする
+データベースにテーブルを作成する
+```
+docker exec -it be-app2 bundle exec rails db:migrate
+```
+
+シードデータを投入する
+```
+docker exec -it be-app2 bundle exec rails db:seed
+```
+
+5. ブラウザで`http://localhost:3009`にアクセスとトップページが表示される
+
 
 ### bundleのバージョンについて
 herokuの対応バージョンが2.1.4のためこのバージョンに固定しています
@@ -99,5 +111,5 @@ gem install bundler -v 2.1.4
 bundle _2.1.4_ install
 ```
 
-### API mode でcookiesをつかう
-https://qiita.com/piggydev/items/663089428b70c481146b
+### bootstrap 5
+https://getbootstrap.jp/docs/5.0/getting-started/introduction/

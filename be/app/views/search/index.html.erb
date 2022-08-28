@@ -1,23 +1,25 @@
 <div class="row top-pages">
   <div class="d-flex align-items-start justify-content-between mb-3">
-    <span style="font-size: 20px; color: #666666; font-weight: bold;">新着画像の検索結果</span>
+    <span style="font-size: 20px; color: #666666; font-weight: bold;"><%= "#{@title}の検索結果" %></span>
   </div>
-  <div class="d-flex align-items-start justify-content-between">
+  <div class="d-flex align-items-start justify-content-between flex-wrap">
     <% if @images.any? %>
       <% @images.each do | image | %>
-        <div class="card card-container position-relative">
-          <div class="card" class="position-relative">
-            <%= image_tag image.picture.url, class: 'top-image' %>
-            <div class="price-container">
-              ¥<%= image.price %>
+        <%= link_to item_path(image.id) do %>
+          <div class="card card-container position-relative mb-2">
+            <div class="card" class="position-relative">
+              <%= image_tag image.picture.url, class: 'top-image', loading: "lazy" %>
+              <div class="price-container">
+                ¥<%= image.price %>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <%= image.content %>
+              </p>
             </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">
-              <%= image.content %>
-            </p>
-          </div>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>

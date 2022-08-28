@@ -1,0 +1,19 @@
+<div class="row justify-content-around">
+  <%# 画像エリア %>
+  <div class="col-md-6">
+    <section class="selling_image_form">
+      <%= image_tag @selling_image.picture.url if @selling_image.picture? %>
+    </section>
+  </div>
+  <div class="col-md-5">
+    <section class="selling_image_form">
+      <span class="title">タイトル <%= @selling_image.title %></span>
+      <span class="content">コメント <%= @selling_image.content %></span>
+      <span class="valid_from">出品開始日時 <%= @selling_image.valid_from.strftime("%Y-%m-%d %H:%M") %></span>
+      <span class="valid_to">出品終了日時 <%= @selling_image.valid_to.strftime("%Y-%m-%d %H:%M") %></span>
+      <span class="timestamp">
+        更新日時 <%= @selling_image.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </span>
+    </section>
+  </div>
+</div>

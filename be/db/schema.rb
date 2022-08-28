@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_27_203110) do
+ActiveRecord::Schema.define(version: 2022_08_28_171804) do
 
   create_table "selling_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "title", null: false
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2022_08_27_203110) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id", "created_at"], name: "index_selling_images_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_selling_images_on_user_id"
+  end
+
+  create_table "user_item_views", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "selling_image_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "selling_image_id"], name: "index_user_item_views_on_user_id_and_selling_image_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

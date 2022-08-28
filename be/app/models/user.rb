@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
   has_many :selling_images, dependent: :destroy
+  has_many :user_item_views, dependent: :destroy
 
   before_save { self.email = email.downcase }
 

@@ -1,4 +1,5 @@
 class SellingImage < ApplicationRecord
+  has_many :user_item_views
   belongs_to :user
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
@@ -6,7 +7,7 @@ class SellingImage < ApplicationRecord
   validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validate :valid_datetime
 
-  default_scope -> { order(created_at: :desc) }
+  # default_scope -> { order(created_at: :desc) }
 
   mount_uploader :picture, PictureUploader
   validate  :picture_size

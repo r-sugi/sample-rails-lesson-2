@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
-  get '/'       => 'top_pages#index'
+  get '/'       => 'top_pages#index', as: 'top_pages'
   get 'help'    => 'static_pages#help'
   get 'about'   => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   end
 
   get '/search' => 'search#index'
+  resources :items, only: [:show]
 end
