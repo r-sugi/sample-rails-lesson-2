@@ -44,3 +44,40 @@ span.picture {
     border: 0;
   }
 }
+
+.top-pages {
+  .top-image {
+    aspect-ratio: 200 / 130;
+  }
+
+  .to-latest-uploaded-list {
+    text-decoration: none;
+  }
+
+  .card-container {
+    max-width: 200px;
+  }
+
+  .card {
+    border: 0px;
+  }
+  .card-body {
+    padding: 5px;
+  }
+  .card-text {
+    font-size: 14px;
+  }
+
+  .price-container {
+    position: absolute;
+    left: 0; bottom: 0;
+    color:white;
+    display: inline-flex;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 0px 20px 20px 0px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 8px;
+    padding: 2px 12px 2px 8px;
+  }
+}
