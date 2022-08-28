@@ -11,18 +11,13 @@
     margin-top: 5em;
     padding-top: 0;
   }
-  .content {
+  .timestamp, .content, .title, .valid_from, .valid_to, .delete_button {
     display: block;
     margin-left: 60px;
     img {
       display: block;
       padding: 5px 0;
     }
-  }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
   }
   .gravatar {
     float: left;

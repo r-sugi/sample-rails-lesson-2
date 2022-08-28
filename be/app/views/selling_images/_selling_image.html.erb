@@ -1,10 +1,16 @@
 <li id="selling-image-<%= selling_image.id %>">
   <%= image_tag selling_image.picture.url if selling_image.picture? %>
+  <span class="title">タイトル <%= selling_image.title %></span>
   <span class="content">コメント <%= selling_image.content %></span>
+  <span class="valid_from">出品開始日時 <%= selling_image.valid_from.strftime("%Y-%m-%d %H:%M") %></span>
+  <span class="valid_to">出品終了日時 <%= selling_image.valid_to.strftime("%Y-%m-%d %H:%M") %></span>
   <span class="timestamp">
-    更新日時 <%= time_ago_in_words(selling_image.created_at) %> 前
-  <% if current_user?(selling_image.user) %>
-    <%= button_to "delete", selling_image, method: :delete, data: { confirm: "You sure?" }, form: {style: 'display:inline-block;'} %>
-  <% end %>
+    更新日時 <%= selling_image.created_at.strftime("%Y-%m-%d %H:%M") %>
   </span>
+  <% if current_user?(selling_image.user) %>
+    <span class="delete_button">
+      <%= button_to "delete", selling_image, method: :delete, data: { confirm: "You sure?" }, form: {style: 'display:inline-block;'} %>
+    </span>
+  <% end %>
 </li>
+<%# TODO: 削除ボタン押下時の挙動の変更 %>

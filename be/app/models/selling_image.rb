@@ -2,6 +2,9 @@ class SellingImage < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
+  validates :title, presence: true, length: { maximum: 100 }
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+  validate :valid_datetime
 
   default_scope -> { order(created_at: :desc) }
 
@@ -9,6 +12,11 @@ class SellingImage < ApplicationRecord
   validate  :picture_size
 
   private
+
+    def valid_datetime
+      errors.add(:valid_from, 'must be a valid datetime') unless !!Date.parse(valid_from) rescue false
+      errors.add(:valid_to, 'must be a valid datetime') unless !!Date.parse(valid_to) rescue false
+    end
 
     # アップロード画像のサイズを検証する
     def picture_size

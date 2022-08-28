@@ -6,10 +6,11 @@ class SellingImagesController < ApplicationController
     @selling_image = current_user.selling_images.build(selling_image_params)
     if @selling_image.save
       flash.now[:success] = "selling_image created!"
+      redirect_to current_user
     else
       flash.now[:danger] = "invalid selling_image input"
+      render 'users/show', user: current_user
     end
-    redirect_to current_user
   end
 
   def destroy
@@ -22,7 +23,7 @@ class SellingImagesController < ApplicationController
   private
 
     def selling_image_params
-      params.require(:selling_image).permit(:content, :picture)
+      params.require(:selling_image).permit(:content, :picture, :title, :valid_to, :valid_from, :price)
     end
 
     def correct_user
