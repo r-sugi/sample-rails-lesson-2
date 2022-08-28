@@ -1,0 +1,23 @@
+<div class="row justify-content-around">
+  <div class="col-md-7">
+    <section class="selling_image_form">
+      <%= render 'shared/selling_image_form' %>
+    </section>
+  </div>
+  <div class="col-md-7 mt-5">
+    <% if @selling_images.any? %>
+      <div class="d-flex justify-content-around">
+        <%= will_paginate @selling_images %>
+      </div>
+      <h3>
+        アップロードした画像一覧 (<%= @selling_images.count %>)
+      </h3>
+      <ol class="selling-images">
+        <%= render @selling_images %>
+      </ol>
+      <div class="d-flex justify-content-around">
+        <%= will_paginate @selling_images %>
+      </div>
+    <% end %>
+  </div>
+</div>

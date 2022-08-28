@@ -8,20 +8,5 @@
         <%= button_to "Edit", edit_user_path(@user), class: "nav-link", method: :get %>
       </h1>
     </section>
-    <div class="row">
-      <section class="selling_image_form">
-        <%= render 'shared/selling_image_form' %>
-      </section>
-    </div>
   </aside>
-  <div class="col-md-7">
-    <% if @user.selling_images.any? %>
-      <%= will_paginate @selling_images %>
-      <h3>アップロードした画像一覧 (<%= @user.selling_images.count %>)</h3>
-      <ol class="selling-images">
-        <%= render @selling_images %>
-      </ol>
-      <%= will_paginate @selling_images %>
-    <% end %>
-  </div>
 </div>

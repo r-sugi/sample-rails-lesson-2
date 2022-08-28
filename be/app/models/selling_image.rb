@@ -11,6 +11,10 @@ class SellingImage < ApplicationRecord
   mount_uploader :picture, PictureUploader
   validate  :picture_size
 
+  def selling?
+    valid_from <= Time.zone.now && valid_to > Time.zone.now
+  end
+
   private
 
     def valid_datetime

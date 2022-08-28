@@ -8,9 +8,12 @@
     更新日時 <%= selling_image.created_at.strftime("%Y-%m-%d %H:%M") %>
   </span>
   <% if current_user?(selling_image.user) %>
-    <span class="delete_button">
-      <%= button_to "delete", selling_image, method: :delete, data: { confirm: "You sure?" }, form: {style: 'display:inline-block;'} %>
-    </span>
+    <% if selling_image.selling? %>
+      <span class="delete_button">
+        <%= button_to "出品を取り消す", user_selling_image_path(user: selling_image.user, id: selling_image.id), method: :delete, data: { confirm: "You sure?" }, form: {style: 'display:inline-block;'} %>
+      </span>
+    <% else %>
+      <span class="expired">出品期限切れ</span>
+    <% end %>
   <% end %>
 </li>
-<%# TODO: 削除ボタン押下時の挙動の変更 %>

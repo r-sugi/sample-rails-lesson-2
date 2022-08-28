@@ -14,8 +14,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @selling_images = @user.selling_images.order(updated_at: :desc).paginate(page: params[:page])
-    @selling_image = @user.selling_images.build
   end
 
   def create
