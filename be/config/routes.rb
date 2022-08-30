@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
-  root             'static_pages#home'
+  get '/'       => 'top_pages#index'
   get 'help'    => 'static_pages#help'
   get 'about'   => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :users  do
     resources :selling_images, only: [:index, :create, :destroy]
   end
+
+  get '/search' => 'search#index'
 end

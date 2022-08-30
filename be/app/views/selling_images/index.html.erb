@@ -1,5 +1,5 @@
 <div class="row justify-content-around">
-  <div class="col-md-7">
+  <div class="col-md-7 mb-2">
     <section class="selling_image_form">
       <%= render 'shared/selling_image_form' %>
     </section>
@@ -9,9 +9,9 @@
       <div class="d-flex justify-content-around">
         <%= will_paginate @selling_images %>
       </div>
-      <h3>
-        アップロードした画像一覧 (<%= @selling_images.count %>)
-      </h3>
+      <p class="mt-4 mb-0 text-center">
+        出品画像 (<%= @selling_images.count %>)
+      </p>
       <ol class="selling-images">
         <%= render @selling_images %>
       </ol>

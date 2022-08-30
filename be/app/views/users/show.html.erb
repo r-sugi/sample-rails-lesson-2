@@ -2,11 +2,15 @@
 <div class="row justify-content-around">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <%= @user.name %>
-        <%= @user.email %>
-        <%= button_to "Edit", edit_user_path(@user), class: "nav-link", method: :get %>
-      </h1>
+      <h2>ユーザー情報</h2>
+      <p>
+        名前: <%= @user.name %>
+      </p>
+      <p>
+        Eメール: <%= @user.email %>
+      </p>
+      <%= button_to "編集する", edit_user_path(@user), class: "nav-link", method: :get %>
+      <%= button_to "ログアウト", logout_path, class: "nav-link", method: :delete %>
     </section>
   </aside>
 </div>
