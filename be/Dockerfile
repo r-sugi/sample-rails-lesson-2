@@ -9,6 +9,11 @@ WORKDIR /be
 COPY Gemfile /be/Gemfile
 COPY Gemfile.lock /be/Gemfile.lock
 
+RUN apt-get update \
+    && apt-get install -y imagemagick --fix-missing \
+    && apt-get -y clean \
+    && rm -rf /var/lib/apt/lists/*
+
 # heroku用に2.1.4に固定
 RUN gem install bundler -v 2.1.4
 

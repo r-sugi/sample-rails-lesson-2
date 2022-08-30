@@ -22,3 +22,18 @@ User.create!(name:  name,
     password:              password,
     password_confirmation: password)
 end
+
+users = User.order(:created_at).take(6)
+datetime_range = Date.yesterday..Date.tomorrow
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each_with_index do |user, index|
+    user.selling_images.create!(
+      content: content,
+      title: "title_#{index}",
+      price: rand(100..60000),
+      valid_from: rand(datetime_range),
+      valid_to: rand(datetime_range),
+    )
+  end
+end

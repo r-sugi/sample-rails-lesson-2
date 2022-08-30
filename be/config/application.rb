@@ -11,6 +11,9 @@ module Bt2
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # active record timezone
+    config.active_record.default_timezone = :local
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

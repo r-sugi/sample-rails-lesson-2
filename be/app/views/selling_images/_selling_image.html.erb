@@ -1,0 +1,19 @@
+<li id="selling-image-<%= selling_image.id %>">
+  <%= image_tag selling_image.picture.url if selling_image.picture? %>
+  <span class="title">タイトル <%= selling_image.title %></span>
+  <span class="content">コメント <%= selling_image.content %></span>
+  <span class="valid_from">出品開始日時 <%= selling_image.valid_from.strftime("%Y-%m-%d %H:%M") %></span>
+  <span class="valid_to">出品終了日時 <%= selling_image.valid_to.strftime("%Y-%m-%d %H:%M") %></span>
+  <span class="timestamp">
+    更新日時 <%= selling_image.created_at.strftime("%Y-%m-%d %H:%M") %>
+  </span>
+  <% if current_user?(selling_image.user) %>
+    <% if selling_image.selling? %>
+      <span class="delete_button">
+        <%= button_to "出品を取り消す", user_selling_image_path(user: selling_image.user, id: selling_image.id), method: :delete, data: { confirm: "You sure?" }, form: {style: 'display:inline-block;'} %>
+      </span>
+    <% else %>
+      <span class="expired">出品期限切れ</span>
+    <% end %>
+  <% end %>
+</li>
