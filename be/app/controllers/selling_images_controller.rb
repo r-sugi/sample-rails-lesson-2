@@ -42,6 +42,6 @@ class SellingImagesController < ApplicationController
 
     def correct_user
       @selling_image = current_user.selling_images.find_by(id: params[:id])
-      redirect_to root_url if @selling_image.nil?
+      redirect_to top_pages_url if @selling_image.nil?
     end
 end

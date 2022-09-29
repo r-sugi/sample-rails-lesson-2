@@ -1,5 +1,5 @@
 <li id="selling-image-<%= selling_image.id %>">
-  <%= image_tag selling_image.picture.url if selling_image.picture? %>
+  <%= image_tag selling_image.picture.url, loading: "lazy" if selling_image.picture? %>
   <span class="title">タイトル <%= selling_image.title %></span>
   <span class="content">コメント <%= selling_image.content %></span>
   <span class="valid_from">出品開始日時 <%= selling_image.valid_from.strftime("%Y-%m-%d %H:%M") %></span>

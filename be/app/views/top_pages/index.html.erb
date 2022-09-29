@@ -1,25 +1,55 @@
-<div class="row top-pages">
-  <div class="d-flex align-items-start justify-content-between mb-3">
-    <span style="font-size: 20px; color: #666666; font-weight: bold;">新着画像</span>
-    <%= link_to "すべて見る >", search_path(key: :latest_uploaded), class: 'to-latest-uploaded-list' %>
-  </div>
-  <div class="d-flex align-items-start justify-content-between">
-    <% if @latest_uploaded_selling_images.any? %>
+<% if @latest_uploaded_selling_images.any? %>
+  <div class="row top-pages mb-5">
+    <div class="d-flex align-items-start justify-content-between mb-3">
+      <span style="font-size: 20px; color: #666666; font-weight: bold;">新着画像</span>
+      <%= link_to "すべて見る >", search_path(key: :latest_uploaded), class: 'to-latest-uploaded-list' %>
+    </div>
+    <div class="d-flex align-items-start justify-content-between">
       <% @latest_uploaded_selling_images.each do | image | %>
-        <div class="card card-container position-relative">
-          <div class="card" class="position-relative">
-            <%= image_tag image.picture.url, class: 'top-image' %>
-            <div class="price-container">
-              ¥<%= image.price %>
+        <%= link_to item_path(image.id) do %>
+          <div class="card card-container position-relative">
+            <div class="card" class="position-relative">
+              <%= image_tag image.picture.url, class: 'top-image', loading: "lazy" %>
+              <div class="price-container">
+                ¥<%= image.price %>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <%= image.content %>
+              </p>
             </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">
-              <%= image.content %>
-            </p>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
+
+<% if @most_viewed_selling_images.any? %>
+  <div class="row top-pages border-top-1">
+    <div class="d-flex align-items-start justify-content-between mb-3">
+      <span style="font-size: 20px; color: #666666; font-weight: bold;">注目されている画像一覧</span>
+      <%= link_to "すべて見る >", search_path(key: :most_attention), class: 'to-latest-uploaded-list' %>
+    </div>
+    <div class="d-flex align-items-start justify-content-between">
+      <% @most_viewed_selling_images.each do | image | %>
+        <%= link_to item_path(image.id) do %>
+          <div class="card card-container position-relative">
+            <div class="card" class="position-relative">
+              <%= image_tag image.picture.url, class: 'top-image', loading: "lazy" %>
+              <div class="price-container">
+                ¥<%= image.price %>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <%= image.content %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
